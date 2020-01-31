@@ -10,6 +10,7 @@ const JWT = require("jsonwebtoken");
 
 PORT = process.env.PORT || 4000;
 
+
 //routes that handle requests
 // const productsRoutes = require("./routes/products");
 // const ordersRoutes = require("./routes/orders");
@@ -26,3 +27,4 @@ app.use("/api/register", registerRoute);
 
 // app.listen(8080, () => console.log("Server started"));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
