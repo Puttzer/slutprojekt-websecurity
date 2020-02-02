@@ -3,6 +3,7 @@ const app = express();
 
 PORT = process.env.PORT || 4000;
 
+
 //routes that handle requests
 // const productsRoutes = require("./routes/products");
 // const ordersRoutes = require("./routes/orders");
@@ -20,3 +21,7 @@ app.use("/", auth);
 
 // app.listen(8080, () => console.log("Server started"));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 843619773534a9c2c3ef5fbe33b2f5fe62a84231
