@@ -21,4 +21,7 @@ app.use("/", auth);
 
 // app.listen(8080, () => console.log("Server started"));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+<<<<<<< HEAD
+=======
 
+>>>>>>> 843619773534a9c2c3ef5fbe33b2f5fe62a84231
