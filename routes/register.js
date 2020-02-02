@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const User = require("../models/User");
 const router = new Router();
-
 const JWT = require("jsonwebtoken")
 const secret = process.env.SECRET;
 
@@ -13,13 +12,11 @@ router.post("/api/register", async (req, res) => {
   } else {
     res.send("Something went wrong with your registration, please try again.")
   }
-
 });
 
 router.post("/api/auth", async (req, res) => {
   const userAuth = await User.auth(req.body);
   const confirm = JWT.verify(userAuth, secret);
-
 
   if (confirm) {
     res.json(confirm)

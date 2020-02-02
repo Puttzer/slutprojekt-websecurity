@@ -8,7 +8,6 @@ const users = new Datastore
         autoload: true
     });
 
-
 module.exports = {
     async register(body) {
         //fields for creating a new user
@@ -51,7 +50,7 @@ module.exports = {
                         }
                     }
                 };
-                console.log("auth working");
+                console.log("Buenos dias fuckboy");
                 return jwt.sign(field, secret);
 
             } else {
