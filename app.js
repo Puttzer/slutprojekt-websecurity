@@ -2,11 +2,7 @@
 
 const express = require("express");
 const app = express();
-const bcrypt = require("bcryptjs");
-require("dotenv").config();
-const fs = require("fs");
-const bodyParser = require("body-parser");
-const JWT = require("jsonwebtoken");
+
 
 PORT = process.env.PORT || 4000;
 
@@ -17,7 +13,6 @@ const registerRoute = require('./routes/register');
 
 //middleware
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api/register", registerRoute);

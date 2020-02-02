@@ -10,18 +10,20 @@ const users = new Datastore
     });
 
 
-async function register(email, password, name, street, zip, city) {
-    const newUser = {
-        email: email,
-        password: password,
-        name: name,
-        adress: {
-            street: street,
-            zip: zip,
-            city: city
+module.exports = {
+    async register(body) {
+        //fields for creating a new user
+        const passwordHash = await bcrypt.hash(body.password, 10);
+        const newUser = {
+            name: body.name,
+            email: body.email,
+            password: passwordHash,
+            adress: {
+                street: body.adress.street,
+                zip: body.adress.zip,
+                city: body.adress.city
+            }
         }
-    };
-    return await users.insert({ newUser })
-}
-
-module.exports = { register }
+        return await users.insert(newUser)
+    }
+}   
