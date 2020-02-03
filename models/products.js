@@ -25,4 +25,8 @@ async function create(body) {
     return await Products.insert(newProd);
 }
 
-module.exports = { all, create };
+async function getOne(id) {
+    return await Products.findOne({ _id: id });
+};
+
+module.exports = { all, create, getOne };
