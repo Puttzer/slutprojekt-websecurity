@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken")
 const secret = process.env.SECRET;
 
 router.post("/api/register", async (req, res) => {
-  console.log("Registration complete! Remove this before public")
+  console.log("Ska came before reggae, But did you know that reggae came from ska?");
   const user = await User.register(req.body);
   if (user) {
     res.json(user);

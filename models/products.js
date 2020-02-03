@@ -9,4 +9,20 @@ async function all() {
     return await Products.find({});
 };
 
-module.exports = { all };
+
+//creating of a product
+
+async function create(body) {
+    const newProd = {
+        _id: body.id,
+        serial: body.serial,
+        title: body.title,
+        price: body.price,
+        shortDesc: body.shortDesc,
+        longDesc: body.longDesc,
+        imgFile: body.imgFile
+    }
+    return await Products.insert(newProd);
+}
+
+module.exports = { all, create };
