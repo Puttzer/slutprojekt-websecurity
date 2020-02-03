@@ -29,4 +29,10 @@ async function getOne(id) {
     return await Products.findOne({ _id: id });
 };
 
+async function update(id, body) {
+    let product = await Products.findOne({ _id: id });
+    product = await Products.update(product, { Set: body })
+    return product;
+}
+
 module.exports = { all, create, getOne };

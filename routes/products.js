@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Products = require("../models/products.js")
 
-
+//gets all products
 router.get("/api/products", async (req, res) => {
     const product = await Products.all();
     res.json(product);
 });
 
+
+//gets one specific
 router.get("/api/products/:id", async (req, res) => {
     const product = await Products.create(req.params.id);
     if (product) {
@@ -17,6 +19,7 @@ router.get("/api/products/:id", async (req, res) => {
     }
 });
 
+//create new product
 router.post("/api/products", async (req, res) => {
     const post = await Products.create(req.body);
     if (!post) {
@@ -25,5 +28,14 @@ router.post("/api/products", async (req, res) => {
         res.json(post);
     }
 });
+
+router.patch("/api/products/:id", async (req, res) => {
+    let product = await Products.update(req.params.id, req.body);
+    if (!product) {
+        res.json({ message: "Unable to update specified product please try again or contact support." })
+    } else {
+        res.json(product)
+    }
+})
 
 module.exports = router;
