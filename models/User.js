@@ -28,10 +28,10 @@ module.exports = {
     async auth(body) {
         const email = body.email;
         const password = body.password;
-        const user = await users.findOne({});
+        const user = await users.findOne({ email });
 
         //conditionals, checking if the user login creditendtials are correct or not then returns according to result.
-        if (email !== user.email) {
+        if (!user) {
             return false;
         } else {
             // if the email is correct, the next step will be to check if the passwords match and return true or false.

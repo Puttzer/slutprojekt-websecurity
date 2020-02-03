@@ -16,9 +16,9 @@ router.post("/api/register", async (req, res) => {
 
 router.post("/api/auth", async (req, res) => {
   const userAuth = await User.auth(req.body);
-  const token = jwt.verify(userAuth, secret);
 
-  if (token) {
+  if (userAuth) {
+    const token = jwt.verify(userAuth, secret);
     res.json(token)
   } else {
     res.json({ error: "An error occured with your login request. Please try again or seek help from customer support." })
