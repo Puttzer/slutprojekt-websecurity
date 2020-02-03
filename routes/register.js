@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const User = require("../models/User");
 const router = new Router();
-const JWT = require("jsonwebtoken")
+const jwt = require("jsonwebtoken")
 const secret = process.env.SECRET;
 
 router.post("/api/register", async (req, res) => {
-  console.log("hej")
+  console.log("Registration complete! Remove this before public")
   const user = await User.register(req.body);
   if (user) {
     res.json(user);
@@ -16,10 +16,10 @@ router.post("/api/register", async (req, res) => {
 
 router.post("/api/auth", async (req, res) => {
   const userAuth = await User.auth(req.body);
-  const confirm = JWT.verify(userAuth, secret);
+  const token = jwt.verify(userAuth, secret);
 
-  if (confirm) {
-    res.json(confirm)
+  if (token) {
+    res.json(token)
   } else {
     res.json({ error: "An error occured with your login request. Please try again or seek help from customer support." })
   }
