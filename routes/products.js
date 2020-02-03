@@ -29,6 +29,7 @@ router.post("/api/products", async (req, res) => {
     }
 });
 
+//update a products information
 router.patch("/api/products/:id", async (req, res) => {
     let product = await Products.update(req.params.id, req.body);
     if (!product) {
@@ -38,4 +39,13 @@ router.patch("/api/products/:id", async (req, res) => {
     }
 })
 
+//Removing a product from the catalog
+router.delete("/api/products/:id", async (req, res) => {
+    let product = await Products.remove(req.params.id);
+    if (!product) {
+        res.json({ message: "Unable to remove product." })
+    } else {
+        res.json(product)
+    }
+})
 module.exports = router;
