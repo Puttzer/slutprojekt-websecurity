@@ -16,6 +16,7 @@ module.exports = {
             name: body.name,
             email: body.email,
             password: passwordHash,
+            role: "customer",
             adress: {
                 street: body.adress.street,
                 zip: body.adress.zip,
@@ -38,24 +39,33 @@ module.exports = {
             const OK = await bcrypt.compare(password, user.password);
             //if password is correct run this.
             if (OK) {
+                const theSecret = process.env.SECRET;
 
-                const field = {
-                    token: "JWT_TOKEN",
+                const payload = {
+                    userID: user._id,
+                    role: user.role,
+                }
+
+                //makin a token
+                const token = jwt.sign(payload, theSecret)
+
+                return {
+                    token: token,
                     user: {
                         email: user.email,
                         name: user.name,
+                        role: user.role,
                         adress: {
                             street: user.adress.street,
                             city: user.adress.city,
                             zip: user.adress.zip
                         }
                     }
-                };
-                console.log("Buenos dias fuckboy");
-                return jwt.sign(({ field: field }), process.env.SECRET);
+                }
+
 
             } else {
-                // if  email and password check returns are both wrong it will return false.
+                // Password check shows incorrections, return false
                 return false;
             }
         }

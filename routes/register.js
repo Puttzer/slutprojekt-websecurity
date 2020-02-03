@@ -15,10 +15,9 @@ router.post("/api/register", async (req, res) => {
 });
 
 router.post("/api/auth", async (req, res) => {
-  const userAuth = await User.auth(req.body);
+  const token = await User.auth(req.body);
 
-  if (userAuth) {
-    const token = jwt.verify(userAuth, secret);
+  if (token) {
     res.status(201).json(token)
     console.log(token);
   } else {
