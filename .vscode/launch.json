@@ -8,7 +8,6 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "stopOnEntry": true,
             "skipFiles": [
                 "<node_internals>/**"
             ],
