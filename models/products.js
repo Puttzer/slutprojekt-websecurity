@@ -25,14 +25,14 @@ async function create(body) {
     return await Products.insert(newProd);
 }
 
-async function getOne(id) {
+async function find(id) {
     return await Products.findOne({ _id: id });
 };
 
-async function update(id, body) {
+async function patch(id, body) {
     let product = await Products.findOne({ _id: id });
     product = await Products.update(product, { Set: body })
     return product;
 }
 
-module.exports = { all, create, getOne };
+module.exports = { all, create, find, patch };
