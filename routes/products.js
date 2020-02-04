@@ -22,10 +22,10 @@ router.get("/api/products/:id", async (req, res) => {
 //create new product
 router.post("/api/products", async (req, res) => {
     const post = await Products.create(req.body);
-    if (!post) {
-        res.json({ message: "Cannot add a new product." })
-    } else {
+    if (post) {
         res.json(post);
+    } else {
+        res.json({ message: "Cannot add a new product." })
     }
 });
 
