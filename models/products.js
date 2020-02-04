@@ -36,7 +36,7 @@ async function patch(id, body) {
 };
 
 async function remove(id) {
-    return await products.remove({ _id: id });
+    return await Products.remove({ _id: id });
 };
 
 module.exports = { all, create, get, patch, remove };

@@ -31,7 +31,7 @@ router.post("/api/products", async (req, res) => {
 
 //update a products information
 router.patch("/api/products/:id", async (req, res) => {
-    let product = await Products.update(req.params.id, req.body);
+    let product = await Products.patch(req.params.id, req.body);
     if (!product) {
         res.json({ message: "Unable to update specified product please try again or contact support." })
     } else {
