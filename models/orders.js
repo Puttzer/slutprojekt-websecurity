@@ -10,6 +10,11 @@ module.exports = {
         return await orders.find({});
     },
 
+    async getAOrder(userID) {
+        return await orders.find({ owner: userID });
+    },
+
+
     //creates new order(stored in a object), stores it in a db
     async create(body, userID) {
         const order = {

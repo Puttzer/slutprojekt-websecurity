@@ -31,14 +31,14 @@ router.get("/api/orders", async (req, res) => {
 
 router.post("/api/orders", async (req, res) => {
     if (req.headers.authorization === undefined) {
-        res.status(403).json({ message: "403 Forbidden" })
+        res.json({ message: "403 Forbidden" })
     } else {
         try {
             const user = jwt.verify(req.headers.authorization.replace("Bearer ", ""), process.env.SECRET);
             const order = await Order.create(req.body, user.userID);
             res.json(order);
         } catch (fail) {
-            res.status(403).json({ message: "The server understood the request but refuses to authorize it. POST js 41" })
+            res.json({ message: "The server understood the request but refuses to authorize it. POST js 41" })
         }
     }
 });

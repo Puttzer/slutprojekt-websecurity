@@ -21,7 +21,8 @@ module.exports = {
                 street: body.adress.street,
                 zip: body.adress.zip,
                 city: body.adress.city
-            }
+            },
+            orderHistory: []
         }
         return await users.insert(newUser)
     },
@@ -59,7 +60,8 @@ module.exports = {
                             street: user.adress.street,
                             city: user.adress.city,
                             zip: user.adress.zip
-                        }
+                        },
+                        orderHistory: user.orderHistory
                     }
                 }
 
@@ -70,4 +72,5 @@ module.exports = {
             }
         }
     }
+
 }   
