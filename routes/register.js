@@ -1,8 +1,8 @@
 const { Router } = require("express");
 const User = require("../models/User");
 const router = new Router();
-const jwt = require("jsonwebtoken")
-const secret = process.env.SECRET;
+
+
 
 router.post("/api/register", async (req, res) => {
   console.log("Ska came before reggae, But did you know that reggae came from ska?");

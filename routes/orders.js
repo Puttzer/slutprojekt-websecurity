@@ -6,7 +6,7 @@ const Order = require("../models/orders")
 
 router.get("/api/orders", async (req, res) => {
     if (req.headers.authorization === undefined) {
-        res.status(403).json({ message: "403 Forbidden" })
+        res.status(401).json({ message: "403 Forbidden" })
     } else {
 
         //checking code for errors
@@ -20,18 +20,18 @@ router.get("/api/orders", async (req, res) => {
                 const orders = await Order.getOrders();
                 res.json(orders)
             } else if (user.role == "customer") {
-                const order = await Order.getOrder();
+                const order = await Order.getOrder(user.userID);
                 res.json(order);
             }
         } catch (fail) {
-            res.status(403).json({ message: "The server understood the request but refuses to authorize it. GET js 27" })
+            res.status(401).json({ message: "The server understood the request but refuses to authorize it. GET js 27" })
         }
     }
 });
 
 router.post("/api/orders", async (req, res) => {
     if (req.headers.authorization === undefined) {
-        res.json({ message: "403 Forbidden" })
+        res.json({ message: "get rekt nerd" })
     } else {
         try {
             const user = jwt.verify(req.headers.authorization.replace("Bearer ", ""), process.env.SECRET);
