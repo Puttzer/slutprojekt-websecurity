@@ -4,7 +4,7 @@ require("dotenv").config();
 const router = express.Router();
 const Order = require("../models/orders")
 
-router.get("/api/orders", async (req, res) => {
+router.get("/", async (req, res) => {
     if (req.headers.authorization === undefined) {
         res.json({ message: "403 Forbidden" })
     } else {
@@ -29,7 +29,7 @@ router.get("/api/orders", async (req, res) => {
     }
 });
 
-router.post("/api/orders", async (req, res) => {
+router.post("/", async (req, res) => {
     if (req.headers.authorization === undefined) {
         res.json({ message: "get rekt nerd (failed)" })
     } else {

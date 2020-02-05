@@ -23,7 +23,7 @@ module.exports = {
             timeStamp: Date.now(),
             status: "InProcess ",
             items: body.items,
-            orderValue: body.orderValue
+            orderValue: body.price
         };
 
         // 
@@ -32,7 +32,8 @@ module.exports = {
             _id: userID
         }, {
             $push: {
-                orderHistory: newOrder._id
+                orderHistory: newOrder._id,
+                orderValue: newOrder.price
             }
         });
     }

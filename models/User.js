@@ -22,7 +22,8 @@ module.exports = {
                 zip: body.adress.zip,
                 city: body.adress.city
             },
-            orderHistory: []
+            orderHistory: [],
+            orderValue: []
         }
         return await users.insert(newUser)
     },
@@ -61,7 +62,8 @@ module.exports = {
                             city: user.adress.city,
                             zip: user.adress.zip
                         },
-                        orderHistory: user.orderHistory
+                        orderHistory: user.orderHistory,
+                        orderValue: user.orderValue
                     }
                 }
 

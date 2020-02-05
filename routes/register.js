@@ -4,7 +4,7 @@ const router = new Router();
 
 
 
-router.post("/api/register", async (req, res) => {
+router.post("/", async (req, res) => {
   console.log("Ska came before reggae, But did you know that reggae came from ska?");
   const user = await User.register(req.body);
   if (user) {
@@ -14,7 +14,7 @@ router.post("/api/register", async (req, res) => {
   }
 });
 
-router.post("/api/auth", async (req, res) => {
+router.post("/", async (req, res) => {
   const token = await User.auth(req.body);
 
   if (token) {

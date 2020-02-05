@@ -3,14 +3,14 @@ const router = express.Router();
 const Products = require("../models/products.js")
 
 //gets all products
-router.get("/api/products", async (req, res) => {
+router.get("/", async (req, res) => {
     const product = await Products.all();
     res.json(product);
 });
 
 
 //gets one specific
-router.get("/api/products/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     const product = await Products.create(req.params.id);
     if (product) {
         res.json(product);
@@ -20,7 +20,7 @@ router.get("/api/products/:id", async (req, res) => {
 });
 
 //create new product
-router.post("/api/products", async (req, res) => {
+router.post("/", async (req, res) => {
     const post = await Products.create(req.body);
     if (post) {
         res.json(post);
@@ -30,7 +30,7 @@ router.post("/api/products", async (req, res) => {
 });
 
 //update a products information
-router.patch("/api/products/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
     let product = await Products.patch(req.params.id, req.body);
     if (!product) {
         res.json({ message: "Unable to update specified product please try again or contact support." })
@@ -40,7 +40,7 @@ router.patch("/api/products/:id", async (req, res) => {
 })
 
 //Removing a product from the catalog
-router.delete("/api/products/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     let product = await Products.remove(req.params.id);
     if (!product) {
         res.json({ message: "Unable to remove product." })
