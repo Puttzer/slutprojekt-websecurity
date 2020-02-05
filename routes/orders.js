@@ -20,7 +20,7 @@ router.get("/api/orders", async (req, res) => {
                 const orders = await Order.getOrders();
                 res.json(orders)
             } else if (user.role == "customer") {
-                const order = await Order.getOrder(user.userID);
+                const order = await Order.getAOrder(user.userID);
                 res.json(order);
             }
         } catch (fail) {
@@ -31,7 +31,7 @@ router.get("/api/orders", async (req, res) => {
 
 router.post("/api/orders", async (req, res) => {
     if (req.headers.authorization === undefined) {
-        res.json({ message: "get rekt nerd" })
+        res.json({ message: "get rekt nerd (failed)" })
     } else {
         try {
             const user = jwt.verify(req.headers.authorization.replace("Bearer ", ""), process.env.SECRET);
