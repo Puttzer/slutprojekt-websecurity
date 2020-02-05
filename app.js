@@ -15,9 +15,9 @@ app.use(express.json());
 
 
 // out
-app.use("/", registerRoute);
-app.use("/", auth);
-app.use("/", Products);
-app.use("/", orderRoutes);
+app.use("/api/register", registerRoute);
+app.use("/api/register", auth);
+app.use("/api/products", Products);
+app.use("/api/orders", orderRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
