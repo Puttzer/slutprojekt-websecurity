@@ -6,7 +6,7 @@ const Order = require("../models/orders")
 
 router.get("/api/orders", async (req, res) => {
     if (req.headers.authorization === undefined) {
-        res.status(401).json({ message: "403 Forbidden" })
+        res.json({ message: "403 Forbidden" })
     } else {
 
         //checking code for errors
@@ -24,7 +24,7 @@ router.get("/api/orders", async (req, res) => {
                 res.json(order);
             }
         } catch (fail) {
-            res.status(401).json({ message: "The server understood the request but refuses to authorize it. GET js 27" })
+            res.json({ message: "The server understood the request but refuses to authorize it. GET js 27" })
         }
     }
 });
