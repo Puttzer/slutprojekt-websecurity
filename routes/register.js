@@ -4,8 +4,7 @@ const router = new Router();
 
 
 
-router.post("/", async (req, res) => {
-  console.log("Ska came before reggae, But did you know that reggae came from ska?");
+router.post("/register", async (req, res) => {
   const user = await User.register(req.body);
   if (user) {
     res.json(user);
@@ -14,14 +13,16 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/auth", async (req, res) => {
+  // console.log(req.body)
+  // console.log(req.headers);
   const token = await User.auth(req.body);
 
   if (token) {
-    res.status(201).json(token)
+    res.json(token)
     console.log(token);
   } else {
-    res.json({ error: "An error occured with your login request. Please try again or seek help from customer support." })
+    res.json({ error: "An error occured with your login request. " })
   }
 });
 

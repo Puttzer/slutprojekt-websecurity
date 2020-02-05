@@ -4,6 +4,7 @@ const Products = require("../models/products.js")
 
 //gets all products
 router.get("/", async (req, res) => {
+
     const product = await Products.all();
     res.json(product);
 });
@@ -32,10 +33,10 @@ router.post("/", async (req, res) => {
 //update a products information
 router.patch("/:id", async (req, res) => {
     let product = await Products.patch(req.params.id, req.body);
-    if (!product) {
-        res.json({ message: "Unable to update specified product please try again or contact support." })
-    } else {
+    if (product) {
         res.json(product)
+    } else {
+        res.json({ message: "Unable to update specified product please try again or contact support." })
     }
 })
 
