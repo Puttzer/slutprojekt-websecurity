@@ -23,7 +23,6 @@ module.exports = {
                 city: body.adress.city
             },
             orderHistory: [],
-            orderValue: []
         }
         return await users.insert(newUser)
     },
@@ -34,14 +33,13 @@ module.exports = {
         const user = await users.findOne({ email: body.email });
 
         //conditionals, checking if the user login creditendtials are correct or not then returns according to result.
-        if (user) {
-
+        if (!user) {
+            return false;
+        } else {
             // if the email is correct, the next step will be to check if the passwords match and return a true or false statement.
             const OK = await bcrypt.compare(password, user.password);
-            console.log(OK);
             //if password is correct run this.
             if (OK) {
-
                 const SECRET = process.env.SECRET;
 
                 const payload = {
@@ -64,7 +62,7 @@ module.exports = {
                             zip: user.adress.zip
                         },
                         orderHistory: user.orderHistory,
-                        orderValue: user.orderValue
+
                     }
                 }
 
@@ -73,9 +71,7 @@ module.exports = {
                 // Password check shows incorrections, return false
                 return false;
             }
-        } else {
-            return false;
         }
-    }
-
+    },
+    users
 };   
