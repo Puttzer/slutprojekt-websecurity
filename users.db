@@ -7,3 +7,4 @@
 {"name":"test","role":"customer","email":"test@mail.com","password":"$2a$10$Z7/I4337X3EdxIwsC/JjVO/vUaZWGqZFr0k78NbkZJMNrrhzcHxcy","adress":{"street":"fpjkdfofd","zip":"ohidfohifdhio","city":"12313"},"_id":"Vr6c9WwVQXzBI7G6"}
 {"name":"assface","email":"lol@mail.com","password":"$2a$10$7nXs9jXf/iS048OH6d.Aheiejrvt0SMCqznnWhY3E.FAQdhMIc9La","role":"customer","adress":{"street":"eksdeeee","zip":"xd","city":"lmao"},"orderHistory":[],"_id":"Xpp3WCOIqTFw5Bpi"}
 {"name":"Patrick","role":"customer","email":"carragher@mai.com","password":"$2a$10$FZzXbWQV1uY1x.HxaOpgeO8r/6Gim2N/qhMLo201ivZ2zqqKyVIde","adress":{"street":"ssds","zip":"12113","city":"lel"},"_id":"dGZb4dIU6lPTCCmm"}
+{"name":"Testo","email":"Testo@mail.com","password":"$2a$10$9s.mF3POkg6Ozg4ayVU4q.v8MwNrpfcXyxCwsPLRaDK44oclN0nWC","role":"admin","adress":{"street":"123123","zip":"hhhfh","city":"lol"},"orderHistory":[],"orderValue":[],"_id":"rdCZHueBMPyAtBdk"}

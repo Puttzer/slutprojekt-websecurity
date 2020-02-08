@@ -21,7 +21,7 @@ router.post("/api/auth", async (req, res) => {
     res.status(201).json(token)
     console.log(token);
   } else {
-    res.json({ error: "An error occured with your login request. Please try again or seek help from customer support." })
+    res.json({ error: "An error occured with your login request. 1234" })
   }
 });
 

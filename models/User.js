@@ -23,7 +23,6 @@ module.exports = {
                 city: body.adress.city
             },
             orderHistory: [],
-            orderValue: []
         }
         return await users.insert(newUser)
     },
@@ -41,7 +40,7 @@ module.exports = {
             const OK = await bcrypt.compare(password, user.password);
             //if password is correct run this.
             if (OK) {
-                const theSecret = process.env.SECRET;
+                const SECRET = process.env.SECRET;
 
                 const payload = {
                     userID: user._id,
@@ -49,7 +48,7 @@ module.exports = {
                 }
 
                 //makin a token
-                const token = jwt.sign(payload, theSecret)
+                const token = jwt.sign(payload, SECRET)
 
                 return {
                     token: token,
@@ -63,7 +62,7 @@ module.exports = {
                             zip: user.adress.zip
                         },
                         orderHistory: user.orderHistory,
-                        orderValue: user.orderValue
+
                     }
                 }
 
@@ -73,6 +72,6 @@ module.exports = {
                 return false;
             }
         }
-    }
-
+    },
+    users
 };   

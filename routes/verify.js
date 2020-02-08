@@ -8,13 +8,10 @@ module.exports = {
             return false;
         } else {
             try {
-                const verify = jwt.verify(
-                    token.replace("Bearer ", ""),
-                    process.env.SECRET
-                );
+                const verify = jwt.verify(token.replace("Bearer ", ""), process.env.SECRET);
                 req.user = verify;
-            } catch (error) {
-                console.log(error);
+            } catch (fail) {
+                console.log(fail);
             }
         }
         next();
