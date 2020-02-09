@@ -4,6 +4,7 @@ require("dotenv").config();
 const router = express.Router();
 const Order = require("../models/orders")
 const verify = require("../routes/verify")
+const Products = require("../models/products")
 // console.log(verify)
 router.get("/", verify.verify, async (req, res) => {
     try {

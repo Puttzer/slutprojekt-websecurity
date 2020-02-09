@@ -9,6 +9,10 @@ async function all() {
     return await Products.find({});
 };
 
+async function getAOrder(id) {
+    return await Products.findOne({ _id: id })
+}
+
 
 //creating of a product
 
@@ -39,4 +43,4 @@ async function remove(id) {
     return await Products.remove({ _id: id });
 };
 
-module.exports = { all, create, get, patch, remove };
+module.exports = { all, getAOrder, create, get, patch, remove };

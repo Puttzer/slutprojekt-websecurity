@@ -45,7 +45,6 @@ module.exports = {
         }, {
             $push: {
                 orderHistory: newOrder._id,
-
             }
         });
     }
