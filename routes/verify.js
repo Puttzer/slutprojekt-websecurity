@@ -3,17 +3,13 @@ require("dotenv").config();
 
 module.exports = {
     async verify(req, res, next) {
-        const token = req.headers.authorization;
-        if (!token) {
-            return false;
-        } else {
-            try {
-                const verify = jwt.verify(token.replace("Bearer ", ""), process.env.SECRET);
-                req.user = verify;
-            } catch (fail) {
-                console.log(fail);
-            }
+        try {
+            const token = req.headers.authorization;
+            const verify = jwt.verify(token.replace("Bearer ", ""), process.env.SECRET);
+            req.user = verify;
+            next();
+        } catch (fail) {
+            res.status(403).json({ error: "Unauthorized" });
         }
-        next();
     }
 };
